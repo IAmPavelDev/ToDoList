@@ -14,7 +14,8 @@ const List = sequelize.define("list", {
 const item = sequelize.define("item", {
 	id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 	name: {type: DataTypes.STRING},
-    main: {type: DataTypes.STRING}
+    main: {type: DataTypes.STRING},
+    listId: { type: DataTypes.INTEGER, primaryKey: true }
 });
 
 List.hasMany(item);

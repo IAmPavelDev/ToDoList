@@ -1,67 +1,58 @@
 .ToDoItem__wrapper {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	width: 100%;
-	align-self: center;
-	min-height: 109px;
-	border: 1px solid rgb(255, 255, 255);
-	border-radius: 20px;
-	padding: 12px;
-	background-color: black;
-	color: white;
-	transition: all 0.3s;
-	&:hover {
-		transform: scale(1.02);
-		border: 1px solid rgb(173, 197, 36);
-		.ToDoItem__wrapper__buttons {
-			button {
-				border: 1px solid rgb(173, 197, 36);
-			}
-		}
-	}
-	.ToDoItem__wrapper__data {
-		display: flex;
-		flex-direction: column;
-		width: 50vw;
-		max-width: 800px;
-		word-wrap: break-word;
-		.ToDoItem__wrapper__name,
-		.ToDoItem__wrapper__preview {
-			font-size: 1.25em;
-			font-weight: 600;
-			min-width: 30%;
-			max-width: 100%;
-			margin: 0 auto;
-			align-self: center;
-			border: 1px solid white;
-			border-radius: 10px;
-			line-height: 1.25em;
-			padding: 5px 10px;
-			min-height: 1.25em;
-			margin-top: 5px;
-		}
-	}
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    min-height: 109px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 12px;
+    background-color: black;
+    width: 100%;
 
-	.ToDoItem__wrapper__buttons {
-		display: flex;
-		flex-direction: column;
-		align-self: flex-end;
-		justify-items: flex-end;
-		button {
-			margin-top: 5px;
-			outline: none;
-			background-color: black;
-			color: white;
-			border: 1px solid white;
-			border-radius: 8px;
-			padding: 5px 10px;
-			transition: all 0.4s;
-			font-weight: 600;
-			&:hover {
-				background-color: rgb(173, 197, 36);
-				color: black;
-			}
-		}
-	}
+    color: white;
+    transition: all 0.3s;
+    &:hover {
+        transform: scale(1.003);
+        border: 1px solid rgb(173, 197, 36);
+        .ToDoItem__wrapper__buttons {
+            button {
+                border: 1px solid rgb(173, 197, 36);
+            }
+        }
+    }
+    .ToDoItem__wrapper__data {
+        display: flex;
+        flex-direction: column;
+        word-wrap: break-word;
+        width: calc(80% - 25px);
+        margin-left: 20px;
+        margin-right: 5px;
+
+        .ToDoItem__wrapper__data__name,
+        .ToDoItem__wrapper__data__main {
+            font-size: 1.25em;
+            font-weight: 600;
+            width: calc(100% - 20px);
+            margin: 10px 0 0 200px;
+            padding: 5px 10px;
+            align-self: flex-end;
+            border: 1px solid white;
+            border-radius: 10px;
+            line-height: 1.25em;
+            min-height: 2.5em;
+            margin-top: 5px;
+        }
+    }
+    .ToDoItem__wrapper__buttons {
+        float: right;
+        font-size: 36px;
+        div {
+            transition: all 0.3s;
+            &:hover {
+                transform: scale(1.03);
+                color: rgb(173, 197, 36);
+            }
+        }
+    }
 }

@@ -21,7 +21,6 @@ export function ItemEditAction(editData) {
 }
 
 export function ItemPostAction(item) {
-    console.log(item);
 	return { type: "items/post", payload: item };
 }
 

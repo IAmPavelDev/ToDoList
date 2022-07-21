@@ -15,12 +15,14 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
+      background-color: black;
       .wrapper__container__input__password__toggle {
         display: flex;
         justify-content: flex-start;
         align-items: center;
         position: absolute;
         color: white;
+        background-color: black;
         margin-right: 8px;
         transition: all 0.3s;
         &:hover {
@@ -37,6 +39,7 @@
       border: 1px solid white;
       border-radius: 8px;
       color: white;
+      background-color: black;
       padding: 5px 10px;
       margin: 5px 0;
       outline: none;

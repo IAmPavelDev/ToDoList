@@ -22,14 +22,12 @@ class UserController {
 		const hashPassword = await bcrypt.hash(password, 5);
 		const user = await User.create({ email, password: hashPassword });
 		console.log(user.id);
-		const listIdOfItems = await List.create({ listId: user.id });
 		const token = jwtGenerator(user.id, email);
-		res.json({ token, listIdOfItems });
+		res.json({ token });
 	}
 	async login(req, res) {
 		const { email, password } = req.body;
 		const user = await User.findOne({ where: { email } });
-		const listIdOfItems = await List.findOne({ where: { listId: user.id } });
 		if (!user) {
 			res.json("User does not exist");
 		}
@@ -38,7 +36,7 @@ class UserController {
 			res.json("Invalid password");
 		}
 		const token = jwtGenerator(user.id, email);
-		res.json({ token, listIdOfItems });
+		res.json({ token });
 	}
 	async check(req, res) {
 		res.json("all right");
