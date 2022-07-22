@@ -1,25 +1,24 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import style from "./ToDoItemCreate.module.scss";
 import { ItemPostAction } from "../../store/ToDoItemsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import itemsSync from "../../server/sync";
 import { FiPaperclip, FiMoon } from "react-icons/fi";
-import { MdAddBox, MdBackHand, MdSync, MdWbSunny } from "react-icons/md";
+import { MdAddBox, MdSync, MdWbSunny } from "react-icons/md";
 
 export default function ToDoItemCreate({ colourMode, setColourMode }) {
     const dispatch = useDispatch();
     const items = useSelector((state) => state);
     const sync = new itemsSync();
-    const themeStatic = {
-        color: colourMode === "white" ? "black" : "white",
-        backgroundColor: colourMode,
-    };
-    const [colour, setColour] = useState(themeStatic);
-    useEffect(() => {
-        console.log(colourMode);
-        setColour(themeStatic);
-        // console.log(colour);
+
+    const colour = useMemo(() => {
+        return {
+            color: colourMode === "white" ? "black" : "white",
+            backgroundColor: colourMode,
+            borderColor: colourMode === "white" ? "black" : "white",
+        };
     }, [colourMode]);
+
     let buffer = {
         name: "",
         main: "",
@@ -43,8 +42,6 @@ export default function ToDoItemCreate({ colourMode, setColourMode }) {
         function setDefaultField() {
             if (fieldRef.current.innerText === "") {
                 fieldRef.current.innerText = placeholder;
-                fieldRef.current.style.color =
-                    colourMode === "white" ? "black" : "white";
                 fieldRef.current.style.opacity = ".7";
             }
         }
@@ -66,14 +63,20 @@ export default function ToDoItemCreate({ colourMode, setColourMode }) {
                 }}
                 onBlur={setDefaultField}
                 onInput={(e) => inputAction(e)}
-                style={{ ...colour, borderColor: themeStatic.color }}
+                style={colour}
             />
         );
     }
     return (
         <>
-            <div style={colour} className={style.create__wrapper}>
-                <div style={colour} className={style.create__wrapper__inputs}>
+            <div
+                style={colour}
+                className={style.create__wrapper}
+            >
+                <div
+                    style={colour}
+                    className={style.create__wrapper__inputs}
+                >
                     {Field("name", style.create__wrapper__name, "name")}
                     {Field(
                         "Main text field",

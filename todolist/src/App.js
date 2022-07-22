@@ -8,10 +8,9 @@ import { useDispatch } from "react-redux";
 import { ItemPostAction } from "./store/ToDoItemsReducer";
 
 function App() {
-    const [isAuth, setIsAuth] = useState(false);
-    const [colourMode, setColourMode] = useState("white"); //true = light, false = dark
+    const [isAuth, setIsAuth] = useState(false); //true = light, false = dark
 
-    function themeReducer(state, action) {
+    function themeReducer(state) {
         return state === "white" ? "black" : "white";
     }
 
@@ -37,7 +36,7 @@ function App() {
             className={style.app__wrapper}
         >
             {!isAuth ? (
-                <Auth setIsAuth={Authorize} />
+                <Auth colourMode={stateColour} setColourMode={dispatchColour} setIsAuth={Authorize} />
             ) : (
                 <>
                     <ToDoItemCreate
